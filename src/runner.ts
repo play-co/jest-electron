@@ -58,7 +58,7 @@ export default class ElectronRunner {
           const config = test.context.config;
           const globalConfig = this._globalConfig;
 
-          electronProc.runTest({
+          await electronProc.runTest({
             serializableModuleMap: test.context.moduleMap.toJSON(),
             config,
             globalConfig,
