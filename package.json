@@ -3,11 +3,6 @@
   "version": "0.1.12",
   "description": "Easiest way to run jest unit test cases in electron.",
   "main": "index.js",
-  "files": [
-    "lib",
-    "runner.js",
-    "environment.js"
-  ],
   "scripts": {
     "test-live": "DEBUG_MODE=1 jest",
     "test": "jest",
