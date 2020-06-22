@@ -3,13 +3,17 @@
   "version": "0.1.12",
   "description": "Easiest way to run jest unit test cases in electron.",
   "main": "index.js",
+  "files": [
+    "lib",
+    "runner.js",
+    "environment.js"
+  ],
   "scripts": {
     "test-live": "DEBUG_MODE=1 jest",
     "test": "jest",
     "cp": "copyfiles -u 1 src/electron/**/*.{html,css} lib",
     "build": "tsc && npm run cp",
-    "prepublishOnly": "npm run build",
-    "postinstall": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "jest": {
     "runner": "./runner",
