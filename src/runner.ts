@@ -66,7 +66,10 @@ export default class ElectronRunner {
           }).then(testResult => {
             testResult.result.failureMessage != null
               ? onFailure(test, testResult.result.failureMessage)
-              : onResult(test, testResult);
+              : onResult(test, testResult.result);
+            if (!this._debugMode) {
+              testResult.proc.kill();
+            }
           }).catch(error => {
             return onFailure(test, error);
           });
