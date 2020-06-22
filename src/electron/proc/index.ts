@@ -102,7 +102,7 @@ export class Electron {
    * run test case
    * @param test
    */
-  public runTest(test: any): Promise<any> {
+  public runTest(test: any): Promise<{proc: ChildProcess, result: any}> {
     const id = uuid();
 
     return new Promise((resolve) => {
@@ -111,7 +111,7 @@ export class Electron {
           if (type === EventsEnum.ProcRunTestResult && resultId === id) {
             proc.removeListener(EventsEnum.ProcMessage, listener);
             // return test result
-            resolve(result);
+            resolve({proc, result});
           }
         };
 
@@ -120,9 +120,6 @@ export class Electron {
 
         // send test data into main thread
         proc.send({ type: EventsEnum.ProcRunTest, test, id })
-        if (!this.debugMode) {
-          proc.kill();
-        }
       });
     });
   }

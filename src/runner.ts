@@ -58,15 +58,18 @@ export default class ElectronRunner {
           const config = test.context.config;
           const globalConfig = this._globalConfig;
 
-          return await electronProc.runTest({
+          electronProc.runTest({
             serializableModuleMap: test.context.moduleMap.toJSON(),
             config,
             globalConfig,
             path: test.path,
           }).then(testResult => {
-            testResult.failureMessage != null
-              ? onFailure(test, testResult.failureMessage)
+            testResult.result.failureMessage != null
+              ? onFailure(test, testResult.result.failureMessage)
               : onResult(test, testResult);
+            if (!this._debugMode) {
+              testResult.proc.kill();
+            }
           }).catch(error => {
             return onFailure(test, error);
           });
