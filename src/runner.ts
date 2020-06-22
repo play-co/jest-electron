@@ -52,7 +52,7 @@ export default class ElectronRunner {
 
     await Promise.all(
       tests.map(
-        throat(concurrency, async (test, idx) => {
+        throat(concurrency * 2, async (test, idx) => {
           onStart(test);
 
           const config = test.context.config;
