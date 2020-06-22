@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { spawn } from 'child_process';
+import { spawn, ChildProcess } from 'child_process';
 import * as electron  from 'electron';
 import { EventsEnum } from '../../utils/constant';
 import { uuid } from '../../utils/uuid';
@@ -54,7 +54,7 @@ export class Electron {
   /**
    * create an idle electron proc
    */
-  private async create(): Promise<any> {
+  private async create(): Promise<ChildProcess> {
     return new Promise((resolve, reject) => {
       // electron starter
       const entry = path.join(__dirname, '../main/index');
@@ -119,7 +119,10 @@ export class Electron {
         proc.on(EventsEnum.ProcMessage, listener);
 
         // send test data into main thread
-        proc.send({ type: EventsEnum.ProcRunTest, test, id });
+        proc.send({ type: EventsEnum.ProcRunTest, test, id })
+        if (!this.debugMode) {
+          proc.kill();
+        }
       });
     });
   }
