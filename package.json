@@ -12,7 +12,7 @@
     "test-live": "DEBUG_MODE=1 jest",
     "test": "jest",
     "cp": "copyfiles -u 1 src/electron/**/*.{html,css} lib",
-    "build": "rimraf lib && tsc && npm run cp",
+    "build": "tsc && npm run cp",
     "prepublishOnly": "npm run build"
   },
   "jest": {
@@ -26,14 +26,14 @@
     ]
   },
   "dependencies": {
-    "electron": "^6.0.7",
-    "jest-haste-map": "~24.9.0",
-    "jest-message-util": "~24.9.0",
-    "jest-mock": "~24.9.0",
-    "jest-resolve": "~24.9.0",
-    "jest-runner": "~24.9.0",
-    "jest-runtime": "~24.9.0",
-    "jest-util": "~24.9.0",
+    "electron": "^6.1.12",
+    "jest-haste-map": "^24.9.0",
+    "jest-message-util": "^24.9.0",
+    "jest-mock": "^24.9.0",
+    "jest-resolve": "^24.9.0",
+    "jest-runner": "^24.9.0",
+    "jest-runtime": "^24.9.0",
+    "jest-util": "^24.9.0",
     "throat": "^5.0.0",
     "tslib": "^1.10.0"
   },
@@ -43,13 +43,13 @@
   "devDependencies": {
     "@types/jest": "^24.0.18",
     "@types/react": "^16.9.15",
-    "copyfiles": "^2.1.1",
+    "copyfiles": "^2.3.0",
     "jest": "^24.9.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "rimraf": "^3.0.0",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.6.2"
+    "typescript": "^3.9.5"
   },
   "keywords": [
     "jest-electron",

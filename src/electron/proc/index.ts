@@ -105,8 +105,8 @@ export class Electron {
   public runTest(test: any): Promise<any> {
     const id = uuid();
 
-    return new Promise((resolve, reject) => {
-      this.get().then((proc) => {
+    return new Promise((resolve) => {
+      this.create().then((proc) => {
         const listener = ({ result, id: resultId, type }) => {
           if (type === EventsEnum.ProcRunTestResult && resultId === id) {
             proc.removeListener(EventsEnum.ProcMessage, listener);
@@ -125,7 +125,7 @@ export class Electron {
   }
 
   public initialWin(): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.get().then((proc) => {
         const listener = ({ type }) => {
           if (type === EventsEnum.ProcInitialWinEnd) {
