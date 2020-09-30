@@ -1,5 +1,5 @@
 {
-  "name": "jest-electron",
+  "name": "@play-co/jest-electron",
   "version": "0.1.12",
   "description": "Easiest way to run jest unit test cases in electron.",
   "main": "index.js",
@@ -61,6 +61,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/akarimgc/jest-electron.git"
+    "url": "git+https://github.com/play-co/jest-electron.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
   }
 }
