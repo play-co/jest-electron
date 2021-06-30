@@ -97,6 +97,8 @@ export class WindowPool {
         webPreferences: {
           webSecurity: false,
           nodeIntegration: true,
+          enableRemoteModule: true,
+          contextIsolation: false,
         },
       };
 
